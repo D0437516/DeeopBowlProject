@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>DeepBowl</title>
+  
+  
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
+
+  <style>
+    @charset "UTF-8";
+* {
+  position: relative;
+  vertical-align: top;
+  letter-spacing: 2px;
+  font-family: 微軟正黑體;
+}
+
+html, body {
+  background-color: #f7f3e8;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+header {
+  display: block;
+  position: relative;
+  color: #f7f3e8;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #569183;
+  height: 48px;
+  line-height: 48px;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
+}
+header a:hover {
+  text-decoration: none;
+}
+header img {
+  margin-left: 15px;
+  margin-bottom: 5px;
+  width: 35px;
+  height: 35px;
+}
+header span {
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #fff !important;
+  font-weight: 900;
+}
+header nav {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  height: 48px;
+  line-height: 48px;
+}
+header nav ul {
+  margin: 0;
+}
+header nav ul li {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 14.4px;
+}
+header nav ul li .bar {
+  display: block;
+  color: #f7f3e8;
+  text-decoration: none;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 8px 0 8px;
+  outline: 0;
+}
+header nav ul li .bar:hover {
+  transition-duration: 0.2s;
+  color: #f7f3e8;
+  font-size: 18px;
+  font-weight: 900;
+  text-decoration: none;
+  border-bottom: solid 5px #ebb967;
+}
+header nav ul li .bar:active {
+  background-color: #ebb967;
+  color: #f7f3e8;
+  font-size: 18px;
+  font-weight: 900;
+  text-decoration: none;
+}
+header nav ul li .bar:visited {
+  color: #f7f3e8;
+  text-decoration: none;
+}
+
+#left {
+  display: inline-block;
+  width: 28%;
+  height: 90%;
+  box-sizing: border-box;
+  margin-left: 10px;
+}
+
+#chat {
+  display: inline-block;
+  height: 650px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#input {
+  display: inline-block;
+  height: 70px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#right {
+  display: inline-block;
+  width: 67%;
+  height: 90%;
+  margin-left: 10px;
+  box-sizing: border-box;
+  overflow: scroll;
+}
+
+h3 {
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: 900;
+  border-bottom: solid 5px #ebb967;
+}
+h3::before {
+  content: "🔥";
+  font-size: 20px;
+  position: relative;
+  bottom: 2px;
+}
+
+.tablelist {
+  position: relative;
+  height: 640px;
+}
+.tablelist table {
+  height: 640px;
+  width: 100%;
+}
+.tablelist table tr {
+  display: inline-block;
+  width: 100%;
+  height: 250px;
+  margin-top: 20px;
+}
+.tablelist table tr td.img {
+  width: 150px;
+  height: 222px;
+  vertical-align: middle;
+  margin-right: 5px;
+  padding: 5px;
+}
+.tablelist table tr td.img img {
+  width: 150px;
+  height: 222px;
+}
+.tablelist table tr td.detail {
+  position: relative;
+}
+.tablelist table tr td.detail p.title {
+  font-size: 20px;
+  font-weight: 900;
+  display: inline-block;
+  padding-left: 5px;
+}
+.tablelist table tr td.detail p.point {
+  display: inline-block;
+  bottom: -12px;
+}
+.tablelist table tr td.detail p.addFavo {
+  display: inline-block;
+  cursor: pointer;
+  bottom: -7px;
+}
+.tablelist table tr td.detail p.addFavo img {
+  width: 25px;
+  height: 25px;
+}
+.tablelist table tr td.detail .content {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+.tablelist table tr td.detail .info {
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  width: 55%;
+  height: 170px;
+  line-height: 20px;
+  letter-spacing: 5px;
+  padding: 5px;
+  margin: 0px;
+  margin-right: 15px;
+  overflow: scroll;
+}
+.tablelist table tr td.detail .embed-container {
+  display: inline-block;
+  position: relative;
+  width: 40%;
+  margin-top: 6px;
+}
+.tablelist table tr td.detail .embed-container iframe {
+  width: 100%;
+  margin-top: 0px;
+  padding: 0px;
+}
+
+.btn_success {
+  float: right;
+}
+
+.btn_success {
+  background-color: #66ad9c;
+  font-size: 15px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.btn_success:hover {
+  transition-duration: 0.3s;
+  background-color: #569183;
+}
+
+  </style>
+
+  
+</head>
+
+<body>
+
+  
+<header id="header"><a href="./index.html"><img src="https://image.flaticon.com/icons/svg/472/472694.svg" alt="icon"/><span>電影查詢機器人</span></a>
+  <nav>
+    <ul>
+      <li><a class="bar" href="#" title="Sign Up" data-toggle="modal" data-target="#signUpModal">註冊</a></li>
+      <li><a class="bar" href="#" title="Log In" data-toggle="modal" data-target="#logInModal">登入</a></li>
+      <li><a class="bar" href="#" title="About Us" data-toggle="modal" data-target="#aboutModal">關於我們</a></li>
+    </ul>
+  </nav>
+</header>
+<div id="left">
+  <iframe allow="microphone" width="100%" height="100%" src="https://console.dialogflow.com/api-client/demo/embedded/a8869725-5b4c-4542-b43d-981b659a9b54"></iframe>
+</div>
+<div id="right">
+  <h3> 近期熱門</h3>
+  <div class="tablelist">
+    <table summary="近期熱門">
+      <tbody>
+        <tr>
+          <td class="img"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></td>
+          <td class="detail">
+            <p class="title">水行俠</p>
+            <p class="point">4.7</p>
+            <p class="addFavo"><img src="https://image.flaticon.com/icons/png/512/149/149217.png" alt="addFavo"/></p>
+            <div class="content">
+              <div class="info">DC最新動作冒險片《水行俠》由溫子仁執導，傑森摩莫亞領銜主演片名角色，會帶領觀眾跨越七個海底王國中浩瀚、視覺上令人屏息的水中世界。這部電影將揭露半人類、半亞特蘭提斯人亞瑟庫瑞（Arthur Curry傑森摩莫亞 飾） 的起源故事，跟隨他踏上他畢生的旅程，這不只會迫使他面對自己的出身，也會讓他發現自己有沒有資格登上他與生俱來的……國王寶座。</div>
+              <div class="embed-container">
+                <iframe src="https://www.youtube.com/embed//4VrcUVzvRwM" frameborder="0" allowfullscreen="0"></iframe>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="img"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/October2018/q2T4kOZUFm3XPcup2XB7-4134x5906.jpg" alt="電影海報"/></td>
+          <td class="detail">
+            <p class="title">比悲傷更悲傷的故事</p>
+            <p class="point">4</p>
+            <p class="addFavo"><img src="https://image.flaticon.com/icons/png/512/149/149217.png" alt="addFavo"/></p>
+            <div class="content">
+              <div class="info">我們都值得，一次奮不顧身的愛。<br>同居不交往，還沒有上床！？張哲凱（K）和宋媛媛（Cream）真的就這樣過了十年！兩人自高中失去家人後就成為彼此最親密的朋友、唯一的家人，他們相愛相依，卻不是戀人，只因K不定時復發的疾病讓他不敢承諾！為了讓Cream擁有他給不起的幸福，他決定隱瞞病情，擅自為心愛的人找到其他可以託付一生的對象......與其自私為對方規劃幸福，何不奮不顧身勇敢愛一次？</div>
+              <div class="embed-container">
+                <iframe src="https://www.youtube.com/embed//CgkvF-KeZXo" frameborder="0" allowfullscreen="0"></iframe>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="img"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/October2018/yPJ0OcPVPEtCjtLfdvjR-2711x3876.jpg" alt="電影海報"/></td>
+          <td class="detail">
+            <p class="title">無敵破壞王2：網路大暴走</p>
+            <p class="point">4.5</p>
+            <p class="addFavo"><img src="https://image.flaticon.com/icons/png/512/149/149217.png" alt="addFavo"/></p>
+            <div class="content">
+              <div class="info">上次見到破壞王後，他和雲妮露在電玩店的生活非常愜意，但雲妮露的機台方向盤居然被玩家弄壞了，工廠已不再生產，因此「甜蜜衝刺」遊戲機台面臨被拔插頭的命運。破壞王與雲妮露打算利用立瓦新買的無線網路進入網路世界，再到網路拍賣上找到替代零件，這樣一切都會恢復正常。<br>進入網路世界的兩人大開眼界，一路上受到了網路賽車遊戲「致命關頭」的賽車手與熱門網站爆音的演算總監讚讚姐幫助，過關斬將籌集資金…。雲妮露在「致命關頭」中體會到久未感受的刺激，不確定自己是否想回到機台的世界，兩個好友對未來與夢想的理念因此分歧，他們該怎麼面對友情的挑戰?「甜蜜衝刺」會不會面臨GAME OVER的命運呢?</div>
+              <div class="embed-container">
+                <iframe src="https://www.youtube.com/embed//eD1Yv3bGQNI" frameborder="0" allowfullscreen="0"></iframe>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div><div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="signUpModalLabel"><b>註冊 Sign Up</b></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<form method="get" action='/user_register/' name="register">
+<div class="form-group">
+<label>帳號 ID Number:　<input type="text" name="user" value=""></label>
+<label>密碼 Password:　<input type="password" name="password" value=""></label>
+<br><hr>
+<button type="submit" value="註冊" class="btn_success">註冊 Sign Up</button>
+</div>
+</form>
+</div>
+<!--<div class="modal-footer">
+<button type="button" class="btn_cancel" data-dismiss="modal">取消 Cancel</button>
+<button type="submit" value="註冊" class="btn_success">註冊 Sign Up</button>
+</div>-->
+</div>
+</div>
+</div>
+<div class="modal fade" id="logInModal" tabindex="-1" role="dialog" aria-labelledby="logInModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="logInModalLabel"><b>登入 Log In</b></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<form method="get" action='/user_login/' name="login">
+<div class="form-group">
+<label>帳號 ID Number:　<input type="text" name="user" value=""></label>
+<label>密碼 Password:　<input type="password" name="password" value=""></label>
+<br><hr>
+<button type="submit" value="登入" class="btn_success">登入 Log In</button>
+</div>
+</form>
+</div>
+<!--<div class="modal-footer">
+<button type="button" class="btn_cancel" data-dismiss="modal">取消 Cancel</button>
+<button type="submit" value="登入" class="btn_success">登入 Log In</button>
+</div>-->
+</div>
+</div>
+</div>
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="aboutModalLabel"><b>關於我們</b></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<p>ヽ(´Д｀)人(´Д｀)人(´Д｀)ノ<br>　明明　　７７　　屁天</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Bye bye</button>
+</div>
+</div>
+</div>
+</div>
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://unpkg.com/popper.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+
+  
+
+</body>
+
+</html>

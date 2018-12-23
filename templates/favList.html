@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>DB_listPage</title>
+  
+  
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
+
+   <style>
+     @charset "UTF-8";
+* {
+  position: relative;
+  vertical-align: top;
+  letter-spacing: 2px;
+  font-family: 微軟正黑體;
+}
+
+html, body {
+  background-color: #f7f3e8;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+}
+
+header {
+  display: block;
+  position: relative;
+  color: #f7f3e8;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #569183;
+  height: 48px;
+  line-height: 48px;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
+}
+header a:hover {
+  text-decoration: none;
+}
+header img {
+  margin-left: 15px;
+  margin-bottom: 5px;
+  width: 35px;
+  height: 35px;
+}
+header span {
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #fff !important;
+  font-weight: 900;
+}
+header nav {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  height: 48px;
+  line-height: 48px;
+}
+header nav ul {
+  margin: 0;
+}
+header nav ul li {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 14.4px;
+}
+header nav ul li .bar {
+  display: block;
+  color: #f7f3e8;
+  text-decoration: none;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 8px 0 8px;
+  outline: 0;
+}
+header nav ul li .bar:hover {
+  transition-duration: 0.2s;
+  color: #f7f3e8;
+  font-size: 18px;
+  font-weight: 900;
+  text-decoration: none;
+  border-bottom: solid 5px #ebb967;
+}
+header nav ul li .bar:active {
+  background-color: #ebb967;
+  color: #f7f3e8;
+  font-size: 18px;
+  font-weight: 900;
+  text-decoration: none;
+}
+header nav ul li .bar:visited {
+  color: #f7f3e8;
+  text-decoration: none;
+}
+
+#left {
+  display: inline-block;
+  width: 28%;
+  height: 90%;
+  box-sizing: border-box;
+  margin-left: 10px;
+}
+
+#chat {
+  display: inline-block;
+  height: 650px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#input {
+  display: inline-block;
+  height: 70px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+#right {
+  display: inline-block;
+  width: 67%;
+  height: 90%;
+  margin-left: 10px;
+  box-sizing: border-box;
+  overflow: scroll;
+}
+
+h3 {
+  padding-top: 10px;
+  font-size: 20px;
+  font-weight: 900;
+  border-bottom: solid 5px #ebb967;
+}
+h3::before {
+  content: "🔥";
+  font-size: 20px;
+  position: relative;
+  bottom: 2px;
+}
+
+.tablelist {
+  position: relative;
+  height: 640px;
+}
+.tablelist table {
+  height: 640px;
+  width: 100%;
+}
+.tablelist table tr {
+  display: inline-block;
+  width: 100%;
+  height: 250px;
+  margin-top: 20px;
+}
+.tablelist table tr td.img {
+  width: 150px;
+  height: 222px;
+  vertical-align: middle;
+  margin-right: 5px;
+  padding: 5px;
+}
+.tablelist table tr td.img img {
+  width: 150px;
+  height: 222px;
+}
+.tablelist table tr td.detail {
+  position: relative;
+}
+.tablelist table tr td.detail p.title {
+  font-size: 20px;
+  font-weight: 900;
+  display: inline-block;
+  padding-left: 5px;
+}
+.tablelist table tr td.detail p.point {
+  display: inline-block;
+  bottom: -12px;
+}
+.tablelist table tr td.detail p.addFavo {
+  display: inline-block;
+  cursor: pointer;
+  bottom: -7px;
+}
+.tablelist table tr td.detail p.addFavo img {
+  width: 25px;
+  height: 25px;
+}
+.tablelist table tr td.detail .content {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+.tablelist table tr td.detail .info {
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  width: 55%;
+  height: 170px;
+  line-height: 20px;
+  letter-spacing: 5px;
+  padding: 5px;
+  margin: 0px;
+  margin-right: 15px;
+  overflow: scroll;
+}
+.tablelist table tr td.detail .embed-container {
+  display: inline-block;
+  position: relative;
+  width: 40%;
+  margin-top: 6px;
+}
+.tablelist table tr td.detail .embed-container iframe {
+  width: 100%;
+  margin-top: 0px;
+  padding: 0px;
+}
+
+.btn_success {
+  float: right;
+}
+
+.btn_success {
+  background-color: #66ad9c;
+  font-size: 15px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.btn_success:hover {
+  transition-duration: 0.3s;
+  background-color: #569183;
+}
+
+   </style>
+
+  
+</head>
+
+<body>
+
+  
+<header id="header"><a href="./index.html"><img src="https://image.flaticon.com/icons/svg/472/472694.svg" alt="icon"/><span>電影查詢機器人</span></a>
+  <nav>
+    <ul>
+      <li><a class="bar" href="#" title="Sign out">登出</a></li>
+      <li><a class="bar dropdown-toggle" id="dropdownMenuLink" href="#" title="MemberInformation" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">會員資訊</a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"><a class="dropdown-item" href="#會員資料" target="_blank">會員資料</a><a class="dropdown-item" href="./favList.html" target="_blank">電影清單</a></div>
+      </li>
+      <li><a class="bar" href="#" title="About Us" data-toggle="modal" data-target="#aboutModal">關於我們</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="content">
+  <div class="max_width">
+    <h2> 喜歡的電影清單</h2>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+    <div class="favList">
+      <div class="imgg"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></div>
+      <div class="detail"> <span>水行俠 4.7</span><a href="https://www.youtube.com/watch?v=4VrcUVzvRwM" target="_blank"><img src="https://image.flaticon.com/icons/png/512/149/149668.png" alt="預告片"/></a></div>
+    </div>
+  </div>
+</div><div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title" id="aboutModalLabel"><b>關於我們</b></h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<p>ヽ(´Д｀)人(´Д｀)人(´Д｀)ノ<br>　明明　　７７　　屁天</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Bye bye</button>
+</div>
+</div>
+</div>
+</div>
+  <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://unpkg.com/popper.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+
+  
+
+</body>
+
+</html>
