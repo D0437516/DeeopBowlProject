@@ -3,7 +3,9 @@ import pymysql
 from flask import Flask
 from flask import render_template
 from flask import request
-
+import json
+import  db
+from flask import Response
 app = Flask(__name__)
 
 
@@ -12,15 +14,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-def openDB():
-     db = pymysql.connect(
-            host='127.0.0.1',
-            user='root',
-            password='0604',
-            database='project',
-            charset='utf8'
-        )
-     return db
+
 
 def get():
     account = request.args.get('user')
@@ -31,12 +25,12 @@ def get():
 def registuser():
     (account, password) = get()
     sql = 'INSERT INTO member VALUES ( \'' + account + '\',\'' + password +'\')'
-    conn = openDB()
+    conn = db.openDB()
     cursor = conn.cursor()
     try:
         cursor.execute(sql)
         conn.commit()
-        return 'SUCESS '
+        return render_template('index_success.html',name=account)
     except:
         traceback.print_exc()
         conn.rollback()
@@ -47,14 +41,16 @@ def registuser():
 def login():
     (account, password) = get()
     sql = 'SELECT * FROM member WHERE username = \''+account+'\' AND userpass =\''+password+'\''
-    conn = openDB()
+    conn = db.openDB()
     cursor = conn.cursor()
     try:
         cursor.execute(sql)
         result = cursor.fetchall()
         print(len(result))
         if len(result) == 1:
-            return 'LOGIN SUCESS'
+
+            return render_template('TEST.html',data = db.test())
+            #return render_template('index_success.html', name=account)
         else:
             return 'NOT CORRECT'
         conn.connit()
@@ -63,8 +59,12 @@ def login():
         conn.rollback()
         conn.close()
 
+@app.route('/addListJumpTo/',methods=["GET"]  )
+def addlist():
+    return render_template('favList.html')
 
 
 
 if __name__ == '__main__':
+
     app.run(debug=True)

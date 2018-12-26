@@ -101,9 +101,25 @@ header nav ul li .bar:visited {
 #left {
   display: inline-block;
   width: 28%;
-  height: 90%;
+  height: 80%;
   box-sizing: border-box;
   margin-left: 10px;
+}
+#left button {
+  width: 100%;
+  height: 10%;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: #ebb967;
+  color: #555555;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+}
+#left button:hover {
+  background-color: #569183;
+  color: #f7f3e8;
+  transition-duration: 0.3s;
 }
 
 #chat {
@@ -182,6 +198,11 @@ h3::before {
   display: inline-block;
   bottom: -12px;
 }
+.tablelist table tr td.detail p.typee {
+  display: inline-block;
+  bottom: -15px;
+  font-size: 12px;
+}
 .tablelist table tr td.detail p.addFavo {
   display: inline-block;
   cursor: pointer;
@@ -259,6 +280,7 @@ h3::before {
 </header>
 <div id="left">
   <iframe allow="microphone" width="100%" height="100%" src="https://console.dialogflow.com/api-client/demo/embedded/a8869725-5b4c-4542-b43d-981b659a9b54"></iframe>
+  <button name="yee" value="" action="yee">yee</button>
 </div>
 <div id="right">
   <h3> 近期熱門</h3>
@@ -270,7 +292,7 @@ h3::before {
           <td class="detail">
             <p class="title">水行俠</p>
             <p class="point">4.7</p>
-            <p class="addFavo"><img src="https://image.flaticon.com/icons/png/512/149/149217.png" alt="addFavo"/></p>
+            <p class="typee">動作 冒險 奇幻</p>
             <div class="content">
               <div class="info">DC最新動作冒險片《水行俠》由溫子仁執導，傑森摩莫亞領銜主演片名角色，會帶領觀眾跨越七個海底王國中浩瀚、視覺上令人屏息的水中世界。這部電影將揭露半人類、半亞特蘭提斯人亞瑟庫瑞（Arthur Curry傑森摩莫亞 飾） 的起源故事，跟隨他踏上他畢生的旅程，這不只會迫使他面對自己的出身，也會讓他發現自己有沒有資格登上他與生俱來的……國王寶座。</div>
               <div class="embed-container">
@@ -284,7 +306,7 @@ h3::before {
           <td class="detail">
             <p class="title">比悲傷更悲傷的故事</p>
             <p class="point">4</p>
-            <p class="addFavo"><img src="https://image.flaticon.com/icons/png/512/149/149217.png" alt="addFavo"/></p>
+            <p class="typee">愛情 劇情</p>
             <div class="content">
               <div class="info">我們都值得，一次奮不顧身的愛。<br>同居不交往，還沒有上床！？張哲凱（K）和宋媛媛（Cream）真的就這樣過了十年！兩人自高中失去家人後就成為彼此最親密的朋友、唯一的家人，他們相愛相依，卻不是戀人，只因K不定時復發的疾病讓他不敢承諾！為了讓Cream擁有他給不起的幸福，他決定隱瞞病情，擅自為心愛的人找到其他可以託付一生的對象......與其自私為對方規劃幸福，何不奮不顧身勇敢愛一次？</div>
               <div class="embed-container">
@@ -298,7 +320,7 @@ h3::before {
           <td class="detail">
             <p class="title">無敵破壞王2：網路大暴走</p>
             <p class="point">4.5</p>
-            <p class="addFavo"><img src="https://image.flaticon.com/icons/png/512/149/149217.png" alt="addFavo"/></p>
+            <p class="typee">動畫 冒險 喜劇</p>
             <div class="content">
               <div class="info">上次見到破壞王後，他和雲妮露在電玩店的生活非常愜意，但雲妮露的機台方向盤居然被玩家弄壞了，工廠已不再生產，因此「甜蜜衝刺」遊戲機台面臨被拔插頭的命運。破壞王與雲妮露打算利用立瓦新買的無線網路進入網路世界，再到網路拍賣上找到替代零件，這樣一切都會恢復正常。<br>進入網路世界的兩人大開眼界，一路上受到了網路賽車遊戲「致命關頭」的賽車手與熱門網站爆音的演算總監讚讚姐幫助，過關斬將籌集資金…。雲妮露在「致命關頭」中體會到久未感受的刺激，不確定自己是否想回到機台的世界，兩個好友對未來與夢想的理念因此分歧，他們該怎麼面對友情的挑戰?「甜蜜衝刺」會不會面臨GAME OVER的命運呢?</div>
               <div class="embed-container">

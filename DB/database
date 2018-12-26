@@ -1,0 +1,55 @@
+import json
+import sys
+import pymysql
+import pandas as pd
+import flask as Flask
+
+# 開啟資料庫
+def OpenDB():
+    db = pymysql.connect(
+    user='root',
+    password='0604',
+    database='project',
+    charset='utf8'
+    )
+    return db
+    ## 新增資料庫
+def IncsertDB(self,sql):
+    conn = OpenDB()
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    return '新增完成'
+
+    ## 搜尋資料庫
+def SearchDB(sql):
+    conn = OpenDB()
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    data = cursor.fetchall()
+    return data
+
+inf = SearchDB('SELECT *FROM movie WHERE MNum<4')
+t = SearchDB('SELECT Type FROM movie_type,movie WHERE MNum=4 AND Tnum<MNum')
+print(inf)
+
+#
+# information = []
+# for i in inf:
+#      for j in i:
+#         information.append(str(j))
+#  for i in information:
+#      print(i,type(i))
+
+for i in inf :
+    print(i[1])
+
+# for x,i in enumerate(inf) :
+#     for y, j in enumerate(i) :
+#         if y != 0:
+#             if y ==3:
+#                 information.append(t[x][:])
+#                 j = str(j)
+#             information.append(j)
+#
+# for i in information:
+#     print(i)
