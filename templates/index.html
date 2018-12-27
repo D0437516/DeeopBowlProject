@@ -194,6 +194,10 @@ h3::before {
   display: inline-block;
   padding-left: 5px;
 }
+.tablelist table tr td.detail p.title span.small_Eng {
+  font-size: 10px;
+  top: 12px;
+}
 .tablelist table tr td.detail p.point {
   display: inline-block;
   bottom: -12px;
@@ -280,35 +284,63 @@ h3::before {
 </header>
 <div id="left">
   <iframe allow="microphone" width="100%" height="100%" src="https://console.dialogflow.com/api-client/demo/embedded/a8869725-5b4c-4542-b43d-981b659a9b54"></iframe>
-  <button name="yee" value="" action="yee">yee</button>
+  <form  method="get" action="/yee/"><button type="submit" name="yee" value="">yee</button><>
 </div>
 <div id="right">
-  <h3> 近期熱門</h3>
-  <div class="tablelist">
-    <table summary="近期熱門">
-      <tbody>
-        <tr>
-          <td class="img"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></td>
-          <td class="detail">
-            <p class="title">水行俠</p>
-            <p class="point">4.7</p>
-            <p class="typee">動作 冒險 奇幻</p>
-            <div class="content">
-              <div class="info">DC最新動作冒險片《水行俠》由溫子仁執導，傑森摩莫亞領銜主演片名角色，會帶領觀眾跨越七個海底王國中浩瀚、視覺上令人屏息的水中世界。這部電影將揭露半人類、半亞特蘭提斯人亞瑟庫瑞（Arthur Curry傑森摩莫亞 飾） 的起源故事，跟隨他踏上他畢生的旅程，這不只會迫使他面對自己的出身，也會讓他發現自己有沒有資格登上他與生俱來的……國王寶座。</div>
-              <div class="embed-container">
-                <iframe src="https://www.youtube.com/embed//4VrcUVzvRwM" frameborder="0" allowfullscreen="0"></iframe>
+  
+    {% if data %}
+    <h3> 查詢結果</h3>
+    {% else %}
+    <h3> 近期熱門</h3>
+    {% endif %}   
+    <div class="tablelist">
+      <table summary="近期熱門">
+        <tbody>
+          {% if data %}
+              {% block content %}
+                  {% for i in data%} 
+  
+          <tr>
+            <td class="img"><img src="{{i.Picture}}" alt="電影海報" method="post"/></td>
+            <td class="detail">
+              <p class="title"><span method="post">{{i.Cname}}</span><span class="small_Eng" method="post">{{Ename}}</span></p>
+              <p class="point" method="post">{{i.Eval}}</p>
+              <p class="typee" method="post">{{i.Type}}</p>
+              <div class="content">
+                <div class="info" method="post"><b>導演：{{i.Director}}<br>演員：{{i.Actor}}<br>上映日期：{{i.Date}}<br>片長：{{i.Time}}</b><br>{{i.Content}}</div>
+                <div class="embed-container" method="post">
+                  <iframe src="https://www.youtube.com/embed//{{i.Video}}" frameborder="0" allowfullscreen="0"></iframe>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
+            </td>
+          </tr>
+          
+                  {%endfor%} 
+              {% endblock %}
+           
+          {% else %}
+          <tr>
+            <td class="img"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/November2018/vY84h6kbxSu77Mo9hirI-2987x4265.jpg" alt="電影海報"/></td>
+            <td class="detail">
+              <p class="title">水行俠</p>
+              <p class="point">4.7</p>
+              <p class="typee">動作 冒險 奇幻</p>
+              <div class="content">
+                <div class="info">DC最新動作冒險片《水行俠》由溫子仁執導，傑森摩莫亞領銜主演片名角色，會帶領觀眾跨越七個海底王國中浩瀚、視覺上令人屏息的水中世界。這部電影將揭露半人類、半亞特蘭提斯人亞瑟庫瑞（Arthur Curry傑森摩莫亞 飾） 的起源故事，跟隨他踏上他畢生的旅程，這不只會迫使他面對自己的出身，也會讓他發現自己有沒有資格登上他與生俱來的……國王寶座。</div>
+                <div class="embed-container">
+                  <iframe src="https://www.youtube.com/embed//4VrcUVzvRwM" frameborder="0" allowfullscreen="0"></iframe>
+                </div>
+              </div>
+            </td>
+          </tr>
         <tr>
           <td class="img"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/October2018/q2T4kOZUFm3XPcup2XB7-4134x5906.jpg" alt="電影海報"/></td>
           <td class="detail">
-            <p class="title">比悲傷更悲傷的故事</p>
+            <p class="title"><span>比悲傷更悲傷的故事</span><span class="small_Eng">More Than Blue</span></p>
             <p class="point">4</p>
             <p class="typee">愛情 劇情</p>
             <div class="content">
-              <div class="info">我們都值得，一次奮不顧身的愛。<br>同居不交往，還沒有上床！？張哲凱（K）和宋媛媛（Cream）真的就這樣過了十年！兩人自高中失去家人後就成為彼此最親密的朋友、唯一的家人，他們相愛相依，卻不是戀人，只因K不定時復發的疾病讓他不敢承諾！為了讓Cream擁有他給不起的幸福，他決定隱瞞病情，擅自為心愛的人找到其他可以託付一生的對象......與其自私為對方規劃幸福，何不奮不顧身勇敢愛一次？</div>
+              <div class="info"><b>上映日期：2018-11-30</b><br><b>片長：01時47分</b><br>我們都值得，一次奮不顧身的愛。<br>同居不交往，還沒有上床！？張哲凱（K）和宋媛媛（Cream）真的就這樣過了十年！兩人自高中失去家人後就成為彼此最親密的朋友、唯一的家人，他們相愛相依，卻不是戀人，只因K不定時復發的疾病讓他不敢承諾！為了讓Cream擁有他給不起的幸福，他決定隱瞞病情，擅自為心愛的人找到其他可以託付一生的對象......與其自私為對方規劃幸福，何不奮不顧身勇敢愛一次？</div>
               <div class="embed-container">
                 <iframe src="https://www.youtube.com/embed//CgkvF-KeZXo" frameborder="0" allowfullscreen="0"></iframe>
               </div>
@@ -318,17 +350,18 @@ h3::before {
         <tr>
           <td class="img"><img src="https://movies.tw.campaign.yahoo.net/i/o/production/movies/October2018/yPJ0OcPVPEtCjtLfdvjR-2711x3876.jpg" alt="電影海報"/></td>
           <td class="detail">
-            <p class="title">無敵破壞王2：網路大暴走</p>
+            <p class="title"><span>無敵破壞王2：網路大暴走</span><span class="small_Eng">Ralph Breaks the Internet: Wreck-It Ralph 2</span></p>
             <p class="point">4.5</p>
             <p class="typee">動畫 冒險 喜劇</p>
             <div class="content">
-              <div class="info">上次見到破壞王後，他和雲妮露在電玩店的生活非常愜意，但雲妮露的機台方向盤居然被玩家弄壞了，工廠已不再生產，因此「甜蜜衝刺」遊戲機台面臨被拔插頭的命運。破壞王與雲妮露打算利用立瓦新買的無線網路進入網路世界，再到網路拍賣上找到替代零件，這樣一切都會恢復正常。<br>進入網路世界的兩人大開眼界，一路上受到了網路賽車遊戲「致命關頭」的賽車手與熱門網站爆音的演算總監讚讚姐幫助，過關斬將籌集資金…。雲妮露在「致命關頭」中體會到久未感受的刺激，不確定自己是否想回到機台的世界，兩個好友對未來與夢想的理念因此分歧，他們該怎麼面對友情的挑戰?「甜蜜衝刺」會不會面臨GAME OVER的命運呢?</div>
+              <div class="info"><b>上映日期：2018-11-29</b><br><b>片長：01時53分</b><br>上次見到破壞王後，他和雲妮露在電玩店的生活非常愜意，但雲妮露的機台方向盤居然被玩家弄壞了，工廠已不再生產，因此「甜蜜衝刺」遊戲機台面臨被拔插頭的命運。破壞王與雲妮露打算利用立瓦新買的無線網路進入網路世界，再到網路拍賣上找到替代零件，這樣一切都會恢復正常。<br>進入網路世界的兩人大開眼界，一路上受到了網路賽車遊戲「致命關頭」的賽車手與熱門網站爆音的演算總監讚讚姐幫助，過關斬將籌集資金…。雲妮露在「致命關頭」中體會到久未感受的刺激，不確定自己是否想回到機台的世界，兩個好友對未來與夢想的理念因此分歧，他們該怎麼面對友情的挑戰?「甜蜜衝刺」會不會面臨GAME OVER的命運呢?</div>
               <div class="embed-container">
                 <iframe src="https://www.youtube.com/embed//eD1Yv3bGQNI" frameborder="0" allowfullscreen="0"></iframe>
               </div>
             </div>
           </td>
         </tr>
+        {% endif %} 
       </tbody>
     </table>
   </div>
@@ -342,7 +375,7 @@ h3::before {
 </button>
 </div>
 <div class="modal-body">
-<form method="get" action='/user_register/' name="register">
+<form method="GET" action='/user_register/' name="register">
 <div class="form-group">
 <label>帳號 ID Number:　<input type="text" name="user" value=""></label>
 <label>密碼 Password:　<input type="password" name="password" value=""></label>
@@ -368,7 +401,7 @@ h3::before {
 </button>
 </div>
 <div class="modal-body">
-<form method="get" action='/user_login/' name="login">
+<form method="GET" action='/user_login/' name="login">
 <div class="form-group">
 <label>帳號 ID Number:　<input type="text" name="user" value=""></label>
 <label>密碼 Password:　<input type="password" name="password" value=""></label>

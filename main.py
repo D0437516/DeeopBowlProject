@@ -1,9 +1,10 @@
 import traceback
 import pymysql
-from flask import Flask
+from flask import Flask,redirect,url_for
+from flask import jsonify
 from flask import render_template
 from flask import request
-import json
+from flask import json
 import  db
 from flask import Response
 app = Flask(__name__)
@@ -13,8 +14,6 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template('index.html')
-
-
 
 def get():
     account = request.args.get('user')
@@ -38,6 +37,7 @@ def registuser():
     conn.close()
 
 @app.route('/user_login/', methods=["GET"])
+
 def login():
     (account, password) = get()
     sql = 'SELECT * FROM member WHERE username = \''+account+'\' AND userpass =\''+password+'\''
@@ -48,8 +48,9 @@ def login():
         result = cursor.fetchall()
         print(len(result))
         if len(result) == 1:
+            Data = db.test()
 
-            return render_template('TEST.html',data = db.test())
+            return render_template('index_success.html',name = account)
             #return render_template('index_success.html', name=account)
         else:
             return 'NOT CORRECT'
@@ -59,11 +60,28 @@ def login():
         conn.rollback()
         conn.close()
 
-@app.route('/addListJumpTo/',methods=["GET"]  )
-def addlist():
-    return render_template('favList.html')
 
+@app.route('/movie_List/',methods=["GET"] )
+def list():
+    return render_template('movieList.html')
 
+@app.route('/yee/',methods=["GET"]  )
+def yee():
+    return render_template('movieList.html')
+
+@app.route('/log_out/',methods=["GET"]  )
+def logout():
+    return render_template('index.html')
+
+@app.route('/user_login/')
+def get():
+    name = request.args.get('user')
+    db.openDB()
+    sql = 'INSERT INTO list (LAccount,) VALUES ( \'' + name + '\',\'' + '1 '+ '\')'
+    conn = db.openDB()
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    conn.commit()
 
 if __name__ == '__main__':
 
